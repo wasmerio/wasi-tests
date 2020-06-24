@@ -1,5 +1,5 @@
 // WASI:
-// mapdir: temp:test_fs/temp
+// tempdir: temp
 
 use std::fs;
 use std::io::{Read, Write};
@@ -9,10 +9,10 @@ fn main() {
     #[cfg(not(target_os = "wasi"))]
     let mut base = PathBuf::from("test_fs");
     #[cfg(target_os = "wasi")]
-    let mut base = PathBuf::from("/");
+    let mut base = PathBuf::from("temp");
 
-    let file_to_create = base.join("temp/path_rename_file.txt");
-    let file_to_rename_to = base.join("temp/path_renamed_file.txt");
+    let file_to_create = base.join("path_rename_file.txt");
+    let file_to_rename_to = base.join("path_renamed_file.txt");
 
     {
         let mut f = std::fs::OpenOptions::new()

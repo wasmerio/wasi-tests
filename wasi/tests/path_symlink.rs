@@ -1,5 +1,5 @@
 // WASI:
-// mapdir: temp:test_fs/temp
+// tempdir: temp
 // mapdir: hamlet:test_fs/hamlet
 
 use std::fs;

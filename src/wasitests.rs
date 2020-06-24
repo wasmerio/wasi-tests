@@ -292,6 +292,16 @@ impl WasiTest {
                 .join(" ");
             out += &format!("\n  (map_dirs {})", map_dirs);
         }
+        if !self.options.tempdir.is_empty() {
+            let temp_dirs = self
+                .options
+                .tempdir
+                .iter()
+                .map(|td| format!("\"{}\"", td))
+                .collect::<Vec<String>>()
+                .join(" ");
+            out += &format!("\n  (temp_dirs {})", temp_dirs);
+        }
 
         out += &format!("\n  (assert_return (i64.const {}))", self.result);
 
@@ -319,6 +329,8 @@ pub struct WasiOptions {
     pub args: Vec<String>,
     /// Pre-opened directories
     pub dir: Vec<String>,
+    /// The alias of the temporary directory to use
+    pub tempdir: Vec<String>,
 }
 
 /// Pulls args to the program out of a comment at the top of the file starting with "// WasiOptions:"
@@ -369,6 +381,9 @@ fn extract_args_from_source_file(source_code: &str) -> Option<WasiOptions> {
                 }
                 "arg" => {
                     args.args.push(tokenized[1].to_string());
+                }
+                "tempdir" => {
+                    args.tempdir.push(tokenized[1].to_string());
                 }
                 e => {
                     eprintln!("WARN: comment arg: `{}` is not supported", e);

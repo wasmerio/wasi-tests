@@ -1,5 +1,5 @@
 // WASI:
-// mapdir: .:test_fs/temp
+// tempdir: .
 
 use std::fs::OpenOptions;
 use std::io::{Read, Write};

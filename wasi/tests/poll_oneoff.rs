@@ -1,6 +1,6 @@
 // WASI:
 // mapdir: hamlet:test_fs/hamlet
-// mapdir: temp:test_fs/temp
+// tempdir: temp
 
 use std::fs;
 use std::io::{Read, Seek, SeekFrom};

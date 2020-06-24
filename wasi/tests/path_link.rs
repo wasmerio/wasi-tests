@@ -1,6 +1,6 @@
 // WASI:
 // mapdir: act5:test_fs/hamlet/act5
-// mapdir: temp:test_fs/temp
+// tempdir: temp
 
 use std::fs;
 use std::io::Read;
