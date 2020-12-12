@@ -393,7 +393,7 @@ fn extract_args_from_source_file(source_code: &str) -> Option<WasiOptions> {
                     // We try first splitting by `::`
                     if let [alias, real_dir] = value.split("::").collect::<Vec<&str>>()[..] {
                         args.mapdir.push((alias.to_string(), real_dir.to_string()));
-                    }
+                    } else
                     // And then we try splitting by `:` (for compatibility with previous API)
                     if let [alias, real_dir] = value.split(':').collect::<Vec<&str>>()[..] {
                         args.mapdir.push((alias.to_string(), real_dir.to_string()));
