@@ -101,14 +101,14 @@ fn run_with_sub_dir() {
     std::fs::rename(&file_to_create, &file_to_rename_to).unwrap();
     let mut file = fs::File::open(&file_to_rename_to).expect("Could not open file");
     if file_to_create.exists() {
-        println!("The original file still exists!");
+        println!("run_with_sub_dir: The original file still exists!");
         return;
     } else {
-        println!("The original file does not still exist!");
+        println!("run_with_sub_dir: The original file does not still exist!");
     }
 
     if !file_to_rename_to.exists() {
-        println!("The moved file does not exist!");
+        println!("run_with_sub_dir: The moved file does not exist!");
         return;
     }
     fs::remove_dir_all(base.join("sub"));
@@ -145,14 +145,14 @@ fn run_with_different_sub_dirs() {
     std::fs::rename(&file_to_create, &file_to_rename_to).unwrap();
     let mut file = fs::File::open(&file_to_rename_to).expect("Could not open file");
     if file_to_create.exists() {
-        println!("The original file still exists!");
+        println!("run_with_different_sub_dirs: The original file still exists!");
         return;
     } else {
-        println!("The original file does not still exist!");
+        println!("run_with_different_sub_dirs: The original file does not still exist!");
     }
 
     if !file_to_rename_to.exists() {
-        println!("The moved file does not exist!");
+        println!("run_with_different_sub_dirs: The moved file does not exist!");
         return;
     }
 
